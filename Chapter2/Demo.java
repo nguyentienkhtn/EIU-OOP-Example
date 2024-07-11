@@ -3,6 +3,13 @@ import java.util.Date;
 
 public class Demo {
     public static void main(String[] args) {
+        Rectangle rectangle 
+            = new Rectangle(50, 20);
+        
+        Square square = new Square(50);
+        System.out.println(square.getLength());
+        square.println();
+
         Product aProduct = 
             new FoodItem("Chicken", 10.5, "Chicken", new Date(), "Chicken", "Chicken");
         // FoodItem foodItem = new Product(null, 0, null);
