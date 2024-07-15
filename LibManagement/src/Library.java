@@ -78,7 +78,7 @@ public class Library {
             if(room.getId().equals(roomID))
                 bookedRoom = room;
         }
-        if(bookedRoom == null && bookedRoom.isBooked())
+        if(bookedRoom == null || bookedRoom.isBooked())
             return false;
         else{
             bookedRoom.setBooked(true);
