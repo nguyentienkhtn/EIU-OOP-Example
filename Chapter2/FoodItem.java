@@ -42,4 +42,11 @@ public class FoodItem extends Product {
     public boolean isExpired() {
         return new Date().after(expirationDate);
     }
+    
+    @Override
+    public void applyDiscount(double percentage) {
+        setPrice(getPrice()*.80);
+    }
+
+    
 }

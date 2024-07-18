@@ -9,7 +9,11 @@ public class Rectangle {
         this.width = width;
         this.length = length;
     }
-
+    public Rectangle (Rectangle rectangle){
+        this.width = rectangle.getWidth();
+        this.length = rectangle.getLength();
+        // copy constructor
+    }
     public int getWidth() {
         return width;
     }
