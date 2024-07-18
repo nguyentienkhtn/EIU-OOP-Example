@@ -2,9 +2,15 @@ public class Solution implements Submit{
 
     @Override
     public void addYourSignature() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addYourSignature'");
+        System.out.println("Tien Nguyen");
     }
+
+
+    public String abc() {
+        return "Solution []";
+    }
+
+    
     
     
 
