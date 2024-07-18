@@ -1,4 +1,4 @@
-public class SuperRichStudent implements Submit{
+public class Solution implements Submit{
 
     @Override
     public void addYourSignature() {
