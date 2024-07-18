@@ -1,17 +1,11 @@
-public class SuperRichStudent extends Student{
-    
-    
+public class SuperRichStudent implements Submit{
 
     @Override
-    public void diHoc() {
+    public void addYourSignature() {
         // TODO Auto-generated method stub
-        System.out.println("Going by rocket");
+        throw new UnsupportedOperationException("Unimplemented method 'addYourSignature'");
     }
-
-    @Override
-    public void diVe() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'diVe'");
-    }
+    
+    
 
 }
