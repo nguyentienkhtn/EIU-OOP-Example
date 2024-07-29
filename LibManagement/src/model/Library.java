@@ -83,14 +83,9 @@ public class Library {
         }
     }
 
-    public void returnRoom(User user, String roomID){
-        for (int i = 0; i < rooms.size(); i++) {
-            Room temp = rooms.get(i);
-            if(temp.getId().equals(roomID)){
-                user.removedBookedRoom(temp);
-                temp.setBooked(false);
-            }
-        }
+    public void returnRoom(User user, Room room){
+        room.setBooked(false);
+        user.removedBookedRoom(room);
     }
 
     public ArrayList<Book> getOverdueBooks(){

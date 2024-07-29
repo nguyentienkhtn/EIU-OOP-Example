@@ -22,5 +22,9 @@ public class EBook extends Book{
     public boolean isBorrowed() {
         return false;
     }
+
+    public Format getFormat() {
+        return format;
+    }
     
 }
