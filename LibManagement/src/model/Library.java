@@ -1,3 +1,4 @@
+package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -26,19 +27,18 @@ public class Library {
         rooms.add(room);
     }
 
-    public void removeBook(String isbn, int copyID){
-        for (Book book : books) {
-            if(book.getIsbn().equals(isbn) && book.getCopyID()==copyID)
-                books.remove(book);
-        }
+    public void removeBook(Book book){
+        
+        books.remove(book);
     }
 
-    public Book searchBook(String isbn){
+    public ArrayList<Book> search(String keyword){
+        ArrayList<Book> result = new ArrayList<>();
         for (Book book : books) {
-            if(book.getIsbn().equals(isbn) && !!book.isBorrowed())
-                return book;
+            if(book.toString().contains(keyword))
+                result.add(book);
         }
-        return null;
+        return result;
     }
 
     public ArrayList<Room> searchRooms(String infor){
@@ -51,27 +51,23 @@ public class Library {
         return result;
     }
 
-    public boolean borrowBook(User user, String isbn, int loanPeriodDays){
-        Book search = searchBook(isbn);
-        if(search != null){
-            search.setDueDate(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(loanPeriodDays)));
-            search.setBorrowed(true);
-            user.addBorrowedBook(search);
-            return true;
-        } 
-        return false;
-    }
-
-    public void returnBook(User user, String isbn, int copyID){
-        for (int i = 0; i < books.size(); i++) {
-            if(books.get(i).getCopyID() == copyID && 
-                books.get(i).getIsbn().equals(isbn)){
-                    books.get(i).setBorrowed(false);
-                    user.removedBorrowedBook(books.get(i));
-                }
+    public boolean borrowBook(User user, Book book, int loanPeriodDays){
+        if (book.isBorrowed()) {
+            return false;
         }
+        book.setDueDate(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(loanPeriodDays)));
+        book.setBorrowed(true);
+        user.addBorrowedBook(book);
+        return true;
+       
+        
     }
 
+    public void returnBook(User user, Book book){
+        user.removedBorrowedBook(book);
+        book.setBorrowed(false);
+    }
+    
     public boolean bookRoom(User user, String roomID){
         Room bookedRoom = null;
         for (Room room : rooms) {

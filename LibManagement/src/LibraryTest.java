@@ -5,6 +5,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.Book;
+import model.Library;
+import model.Room;
+import model.User;
+
 public class LibraryTest {
     Library bLibrary;
     User user;
@@ -12,10 +17,7 @@ public class LibraryTest {
     Room room;
     @Before
     public void setup(){
-        bLibrary = new Library();
-        book = new Book("123456", "Introduction to java", "Tony", 1);
-        room = new Room("203", "Study room with TV", 10);
-        user = new User("012", "Tien Nguyen");
+        
     }
     @Test
     public void testAddBook() {
