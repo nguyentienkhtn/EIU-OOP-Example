@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Book {
+public abstract class Book {
     private String isbn;
     private String title;
     private String author;
@@ -52,5 +52,7 @@ public class Book {
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
+    
+    
     
 }
