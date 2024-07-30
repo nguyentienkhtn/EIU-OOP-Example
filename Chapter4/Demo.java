@@ -1,21 +1,15 @@
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-
 public class Demo {
     public static void main(String[] args) {
-        Student a = new Student("a", "a", 10.5);
-        Student b = new Student("b", "b", 10.4);
         
-        Map<String,Student> students = new TreeMap();
-        students.put(b.getId(), b);
-        students.put(a.getId(), a);
+        Point<Number> point = new Point<>(10.0, 5.0);       
+        display(point); 
+        Point<Double> point2 = new Point<>(10.0, 5.0);       
+        display(point2); 
+        Point<String> point3 = new Point<>("10.0", "5.0");        
+    }
 
-        Iterator iterator = students.keySet().iterator();
-        while (iterator.hasNext()) {
-           System.out.println(students.get(iterator.next())); 
-        }
-        
-        
+    static void display(Point<? extends Number> p){
+        double x = p.getX().doubleValue();
+        System.out.println(p);
     }
 }
