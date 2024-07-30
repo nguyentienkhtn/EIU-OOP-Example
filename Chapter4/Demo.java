@@ -5,7 +5,6 @@ public class Demo {
         display(point); 
         Point<Double> point2 = new Point<>(10.0, 5.0);       
         display(point2); 
-        Point<String> point3 = new Point<>("10.0", "5.0");        
     }
 
     static void display(Point<? extends Number> p){
