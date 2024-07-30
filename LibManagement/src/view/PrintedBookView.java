@@ -8,7 +8,7 @@ import model.PrintedBook;
 public class PrintedBookView extends BookView{
     PrintedBook printedBook;
     
-    public void seteBook(PrintedBook printedBook) {
+    public void setPrintedBook(PrintedBook printedBook) {
         this.printedBook = printedBook;
     }
 
@@ -27,7 +27,7 @@ public class PrintedBookView extends BookView{
         contentPanel.add(titleLabel);
         contentPanel.add(new JLabel(printedBook.getTitle()));
         contentPanel.add(new JLabel("Is borrowed"));
-        contentPanel.add(new JLabel(Boolean.toString(printedBook.isBorrowed()));
+        contentPanel.add(new JLabel(Boolean.toString(printedBook.isBorrowed())));
         return contentPanel;        
 
     }
