@@ -20,6 +20,10 @@ public class PrintedBook extends Book{
     public boolean isBorrowed() {
         return isBorrowed;
     }
+    public int getCopyID() {
+        return copyID;
+    }
+    
     
     
     
