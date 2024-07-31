@@ -1,4 +1,8 @@
 package view;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 public class AdminDashboard extends JPanel{
     private JPanel mainPanel;
@@ -13,7 +17,15 @@ public class AdminDashboard extends JPanel{
         mainPanel.add(new JLabel("Welcome admin!"));        
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
-        addPrintedBook = new JButton("Add printed book");
+        try {
+            BufferedImage img = ImageIO.read(getClass().getResource("../resources/ebook.bmp"));
+            ImageIcon icon = new ImageIcon(img);
+            addPrintedBook = new JButton(icon);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
         addEBook = new JButton("Add e book");
         addRoom = new JButton("Add room");
         buttonPanel.add(addPrintedBook);
