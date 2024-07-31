@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+
 
 public abstract class BookView extends JPanel{
     

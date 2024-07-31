@@ -1,7 +1,6 @@
 package view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -31,4 +30,8 @@ public abstract class BookEditor {
         
     }
     public abstract JPanel editor();
+    /**
+     * load data when the app starts for fast searching
+     */
+    public abstract void loadData();
 }

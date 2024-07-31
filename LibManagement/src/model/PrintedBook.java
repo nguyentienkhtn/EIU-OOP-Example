@@ -1,6 +1,7 @@
 package model;
 
 public class PrintedBook extends Book{
+    private static final long serialVersionUID = 1L;
     private boolean isBorrowed;
     private int copyID;
     public PrintedBook(String isbn, String title, String author, int copyID) {
