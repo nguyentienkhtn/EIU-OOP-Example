@@ -8,7 +8,7 @@ public class AdminDashboard extends JPanel{
     private JPanel mainPanel;
     private JButton addPrintedBook;
     private JButton addEBook;
-    private JButton addRoom;
+    private JButton addUser;
     
     public AdminDashboard() {
 
@@ -18,19 +18,23 @@ public class AdminDashboard extends JPanel{
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
         try {
-            BufferedImage img = ImageIO.read(getClass().getResource("../resources/ebook.bmp"));
-            ImageIcon icon = new ImageIcon(img);
-            addPrintedBook = new JButton(icon);
+            BufferedImage ebookImg = ImageIO.read(getClass().getResource("../resources/ebook.bmp"));
+            ImageIcon ebookIcon = new ImageIcon(ebookImg);
+            addEBook = new JButton("Add ebook", ebookIcon);
+            BufferedImage printedBookImg = ImageIO.read(getClass().getResource("../resources/printedBook.bmp"));
+            ImageIcon printedIcon = new ImageIcon(printedBookImg);
+            addPrintedBook = new JButton("Add printed book", printedIcon);
+            BufferedImage userImg = ImageIO.read(getClass().getResource("../resources/user.bmp"));
+            ImageIcon userIcon = new ImageIcon(userImg);
+            addUser = new JButton("Add user", userIcon);
+            
+
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
-        addEBook = new JButton("Add e book");
-        addRoom = new JButton("Add room");
         buttonPanel.add(addPrintedBook);
         buttonPanel.add(addEBook);
-        buttonPanel.add(addRoom);
+        buttonPanel.add(addUser);
         mainPanel.add(buttonPanel);
         
     }
