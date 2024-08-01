@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout.Alignment;
-
+import javax.swing.JComponent;
 import model.Book;
 import model.EBook;
 
@@ -35,7 +35,7 @@ public class BookSearch extends JFrame{
         JPanel search = new JPanel(new GridLayout(1, 2));
         searchTextField = new JTextField(50);
         searchButton = new JButton("Search");
-        searchButton.setFont(new Font(getName(), 3, 15));
+        // searchButton.setFont(new Font(getName(), 3, 15));
         // searchButton.setMaximumSize(new Dimension(20, 20));
         search.add(searchTextField);
         search.add(searchButton);
@@ -54,7 +54,7 @@ public class BookSearch extends JFrame{
     public void addSearchButtonListener(ActionListener e){
         searchButton.addActionListener(e);
     }
-    public void addResultToPanel(JPanel x){
+    public void addResultToPanel(JComponent x){
         this.resultPanel.add(x);
 
     }
@@ -63,7 +63,7 @@ public class BookSearch extends JFrame{
         BookSearch search = new BookSearch();
         search.setVisible(true);
         EBook e = new EBook("123", "java introduction", "Tien Nguyen", model.Format.CHM);
-        search.addResultToPanel(new EBookView(e).display());
+        search.addResultToPanel(new JLabel(e.toString()));
         search.getContentPane().revalidate();
         search.getContentPane().repaint();
         

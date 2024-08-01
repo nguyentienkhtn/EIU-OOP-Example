@@ -12,7 +12,7 @@ public class EBook extends Book{
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " " + "isbn: " + getIsbn() + " title: " + getTitle() + " author: " + getAuthor() + "format: " + format.name();
+        return getClass().getSimpleName() + " " + "isbn: " + getIsbn() + " title: " + getTitle() + " author: " + getAuthor() + " format: " + format.name();
     }
 
     @Override
