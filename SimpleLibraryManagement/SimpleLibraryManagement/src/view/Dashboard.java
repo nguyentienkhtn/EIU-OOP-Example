@@ -24,7 +24,7 @@ public class Dashboard extends JFrame{
         ImageIcon ebookIcon = new ImageIcon(ebookImg);
         bookBorrowButton = new JButton("Borrow book", ebookIcon);
         
-        BufferedImage roomImg = ImageIO.read(getClass().getResource("../resources/user.bmp"));
+        BufferedImage roomImg = ImageIO.read(getClass().getResource("../resources/room.bmp"));
         ImageIcon roomIcon = new ImageIcon(roomImg);
         roomBookingButton = new JButton("Book room", roomIcon);
         

@@ -52,11 +52,11 @@ public class Library {
     }
 
     public boolean borrowBook(User user, Book book, int loanPeriodDays){
-        if (book.isBorrowed()) {
+        if (!book.isAvailable()) {
             return false;
         }
         book.setDueDate(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(loanPeriodDays)));
-        book.setBorrowed(true);
+        book.setIsAvailable(false);
         user.addBorrowedBook(book);
         return true;
        
@@ -65,7 +65,7 @@ public class Library {
 
     public void returnBook(User user, Book book){
         user.removedBorrowedBook(book);
-        book.setBorrowed(false);
+        book.setIsAvailable(true);
     }
     
     public boolean bookRoom(User user, String roomID){
@@ -74,17 +74,17 @@ public class Library {
             if(room.getId().equals(roomID))
                 bookedRoom = room;
         }
-        if(bookedRoom == null || bookedRoom.isBooked())
+        if(bookedRoom == null || (bookedRoom.isAvailable() == false))
             return false;
         else{
-            bookedRoom.setBooked(true);
+            bookedRoom.setIsAvailable(false);
             user.addBookedRoom(bookedRoom);
             return true;
         }
     }
 
     public void returnRoom(User user, Room room){
-        room.setBooked(false);
+        room.setIsAvailable(true);
         user.removedBookedRoom(room);
     }
 

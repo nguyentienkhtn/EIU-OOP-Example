@@ -1,15 +1,18 @@
 package model;
-public class Room {
+
+import java.util.Date;
+
+public class Room implements Service{
     private String id;
     private String description;
     private int capacity;
-    private boolean isBooked;
+    private boolean isAvailable;
     
     public Room(String id, String description, int capacity) {
         this.id = id;
         this.description = description;
         this.capacity = capacity;
-        this.isBooked = false;
+        this.isAvailable = true;
     }
     public String getId() {
         return id;
@@ -29,11 +32,24 @@ public class Room {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    public boolean isBooked() {
-        return isBooked;
+    @Override
+    public boolean isAvailable() {
+        return isAvailable;
     }
-    public void setBooked(boolean isBooked) {
-        this.isBooked = isBooked;
+    @Override
+    public void setIsAvailable(boolean value) {
+        this.isAvailable = value;
     }
+    @Override
+    public Date getDueDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDueDate'");
+    }
+    @Override
+    public void setDueDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDueDate'");
+    }
+    
     
 }

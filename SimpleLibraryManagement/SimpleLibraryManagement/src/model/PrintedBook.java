@@ -2,27 +2,33 @@ package model;
 
 public class PrintedBook extends Book{
     private static final long serialVersionUID = 1L;
-    private boolean isBorrowed;
+    private boolean isAvailable;
     private int copyID;
     public PrintedBook(String isbn, String title, String author, int copyID) {
         super(isbn, title, author);
         this.copyID = copyID;
-        isBorrowed = false;
+        isAvailable = true;
     }
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " " + "isbn: " + getIsbn() + " title: " + getTitle() + " author: " + getAuthor() + " copyid: " +copyID + "isborrowed: " + isBorrowed;
+        return getClass().getSimpleName() + ", isbn: " + getIsbn() + ", title: " + getTitle().toUpperCase() + ", author: " + getAuthor() + ", copyid: " +copyID + ", isAvailable: " + isAvailable;
     }
-    @Override
-    public void setBorrowed(boolean isBorrowed) {
-        this.isBorrowed = isBorrowed;
-    }
-    @Override
-    public boolean isBorrowed() {
-        return isBorrowed;
-    }
+    
     public int getCopyID() {
         return copyID;
+    }
+    @Override
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+    @Override
+    public void setIsAvailable(boolean value) {
+        isAvailable = value;
+    }
+    @Override
+    public void setDueDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDueDate'");
     }
     
     

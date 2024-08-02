@@ -16,13 +16,13 @@ public class EBook extends Book{
     }
 
     @Override
-    public void setBorrowed(boolean isBorrowed) {
+    public void setIsAvailable(boolean isBorrowed) {
         
     }
 
     @Override
-    public boolean isBorrowed() {
-        return false;
+    public boolean isAvailable() {
+        return true;
     }
 
     public Format getFormat() {
@@ -37,6 +37,12 @@ public class EBook extends Book{
             EBook eBook = (EBook)obj;
             return (this.getIsbn().equals(eBook.getIsbn())) && this.getFormat().equals(eBook.getFormat());
         }
+    }
+
+    @Override
+    public void setDueDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDueDate'");
     }
     
     

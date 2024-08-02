@@ -2,7 +2,7 @@ package model;
 import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Book implements Serializable{
+public abstract class Book implements Serializable, Service{
     private static final long serialVersionUID = 1L;
     private String isbn;
     private String title;
@@ -43,8 +43,7 @@ public abstract class Book implements Serializable{
     }
     
     public abstract String toString();
-    public abstract void setBorrowed(boolean isBorrowed);
-    public abstract boolean isBorrowed();
+    
     
     
     
