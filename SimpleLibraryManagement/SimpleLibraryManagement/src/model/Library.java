@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Library {
-    private ArrayList<Book> books;
-    private ArrayList<Room> rooms;
+    private ArrayList<Service> services;
+    
     private ArrayList<User> users;
     public Library() {
-        books = new ArrayList<>();
-        rooms = new ArrayList<>();
+        services = new ArrayList<>();
+        
         users = new ArrayList<>();
         
     }
@@ -21,81 +21,51 @@ public class Library {
     public boolean containsUser(User user){
         return users.contains(user);
     }
-    public void addBook(Book book)
+    public void addService(Service s)
     {
-        books.add(book);
+        services.add(s);
     }
 
-    public void addRom(Room room){
-        rooms.add(room);
-    }
+    
 
-    public void removeBook(Book book){
+    public void removeService(Service s){
         
-        books.remove(book);
+        services.remove(s);
     }
 
-    public ArrayList<Book> search(String keyword){
-        ArrayList<Book> result = new ArrayList<>();
-        for (Book book : books) {
-            if(book.toString().contains(keyword))
-                result.add(book);
+    public ArrayList<Service> search(String keyword){
+        ArrayList<Service> result = new ArrayList<>();
+        for (Service s : services) {
+            if(s.toString().contains(keyword))
+                result.add(s);
         }
         return result;
     }
 
-    public ArrayList<Room> searchRooms(String infor){
-        ArrayList<Room> result = new ArrayList<>();
-        for (Room room : rooms) {
-            if(room.getId().equals(infor) ||
-                room.getDescription().contains(infor))
-                result.add(room);
-        }
-        return result;
-    }
+    
 
-    public boolean borrowBook(User user, Book book, int loanPeriodDays){
-        if (!book.isAvailable()) {
+    public boolean bookService(User user, Service s, int loanPeriodDays){
+        if (!s.isAvailable()) {
             return false;
         }
-        book.setDueDate(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(loanPeriodDays)));
-        book.setIsAvailable(false);
-        user.addBorrowedBook(book);
+        s.setDueDate(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(loanPeriodDays)));
+        s.setIsAvailable(false);
+        user.addBookedService(s);
         return true;
        
         
     }
 
-    public void returnBook(User user, Book book){
-        user.removedBorrowedBook(book);
-        book.setIsAvailable(true);
-    }
-    
-    public boolean bookRoom(User user, String roomID){
-        Room bookedRoom = null;
-        for (Room room : rooms) {
-            if(room.getId().equals(roomID))
-                bookedRoom = room;
-        }
-        if(bookedRoom == null || (bookedRoom.isAvailable() == false))
-            return false;
-        else{
-            bookedRoom.setIsAvailable(false);
-            user.addBookedRoom(bookedRoom);
-            return true;
-        }
+    public void returnService(User user, Service s){
+        s.setIsAvailable(true);
+        user.removeBookedService(s);;
     }
 
-    public void returnRoom(User user, Room room){
-        room.setIsAvailable(true);
-        user.removedBookedRoom(room);
-    }
-
-    public ArrayList<Book> getOverdueBooks(){
-        ArrayList<Book> result = new ArrayList<>();
-        for (Book book : books) {
-            if(book.getDueDate().compareTo(new Date()) < 0)
-                result.add(book);
+    public ArrayList<Service> getOverdueService(User user){
+        ArrayList<Service> result = new ArrayList<>();
+        for (Service s : user.getBookedServices()) {
+            if(s.getDueDate().compareTo(new Date()) < 0)
+                result.add(s);
         }
         return result;
     }

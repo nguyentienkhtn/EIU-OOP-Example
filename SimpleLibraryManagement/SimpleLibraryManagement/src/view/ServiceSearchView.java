@@ -23,7 +23,7 @@ import javax.swing.ListSelectionModel;
 import model.Service;
 import model.User;
 
-public class ServiceSearch extends JFrame{
+public class ServiceSearchView extends JFrame{
     final int MAX_ROW_DISPLAY = 10;
     private JLabel title;
     private JTextField searchTextField;
@@ -36,7 +36,7 @@ public class ServiceSearch extends JFrame{
     private User user;
     private JSplitPane bookPane;
     private JButton bookServiceButton;
-    public ServiceSearch(User user){
+    public ServiceSearchView(User user){
         this.user = user;
         availableServices = DataLoader.loadServiceData("services.dat");
         searchResults = new ArrayList<>();

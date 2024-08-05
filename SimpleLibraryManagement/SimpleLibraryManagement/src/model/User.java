@@ -7,9 +7,7 @@ public class User implements Serializable{
     private String id;
     private String name;
     private String hashedPassword;
-    private ArrayList<Book> borrowedBooks;
-    private ArrayList<Room> bookedRooms;
-    private List<Service> bookedService;
+    private List<Service> bookedServices;
     
     public User(String id) {
         this.id = id;
@@ -18,9 +16,7 @@ public class User implements Serializable{
     public User(String id, String name) {
         this.id = id;
         this.name = name;
-        bookedRooms = new ArrayList<>();
-        borrowedBooks = new ArrayList<>();
-        bookedService = new ArrayList<>();
+        bookedServices = new ArrayList<>();
     }
     
     public void setPassword(String hashedPassword) {
@@ -44,30 +40,16 @@ public class User implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    public ArrayList<Book> getBorrowedBooks() {
-        return borrowedBooks;
-    }
-    
-    public ArrayList<Room> getBookedRooms() {
-        return bookedRooms;
-    }
-    
-    public void addBorrowedBook(Book book){
-        borrowedBooks.add(book);
-    }
-    public void removedBorrowedBook(Book book){
-        borrowedBooks.remove(book);
-    }
-    public void addBookedRoom(Room room){
-        bookedRooms.add(room);
-    }
-    public void removedBookedRoom(Room room){
-        bookedRooms.remove(room);
-    }
     public void addBookedService(Service service)
     {
-        bookedService.add(service);
+        bookedServices.add(service);
     }
+
+    public void removeBookedService(Service s)
+    {
+        bookedServices.remove(s);
+    }
+    
 
     @Override
     public String toString() {
@@ -81,6 +63,10 @@ public class User implements Serializable{
             User user = (User)obj;
             return (this.getId().equals(user.getId())) && (this.hashedPassword.equals(user.hashedPassword));
         }
+    }
+
+    public List<Service> getBookedServices() {
+        return bookedServices;
     }
 
     

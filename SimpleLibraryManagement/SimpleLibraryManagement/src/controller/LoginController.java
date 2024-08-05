@@ -2,21 +2,22 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import model.Library;
 import model.User;
 import utilities.PasswordUtil;
 import view.LoginView;
-import view.ServiceSearch;
+import view.ServiceSearchView;
 
 public class LoginController {
-    private List<User> users;
+    private Library model;
+    
     private LoginView view;
     
-    public LoginController(List<User> users, LoginView view) {
-        this.users = users;
+    public LoginController(Library model, LoginView view) {
+        this.model = model;
         this.view = view;
         this.view.addLoginButtonListener(new LoginAction());
     }
@@ -35,9 +36,9 @@ public class LoginController {
             
             User user = new User(userName);
             user.setPassword(hashedPassword);
-            if(users.contains(user)){
+            if(model.containsUser(user)){
                 view.dispose();//close current window
-                new ServiceSearch(user).setVisible(true);;
+                new ServiceSearchView(user).setVisible(true);;
             }
             else
             {
