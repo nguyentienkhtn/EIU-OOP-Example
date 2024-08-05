@@ -11,9 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
-import model.Book;
-import model.PrintedBook;
 import model.Service;
 import model.User;
 
@@ -65,6 +62,7 @@ public class ServiceBorrowView extends JFrame{
                 System.out.println(service);
                 serviceInfor.setText(service.toString());
                 result.setText("Successful! You can go to the counter to get the service");
+                borrowButton.setEnabled(false);
                 getContentPane().revalidate();
                 getContentPane().repaint();
                 pack();
@@ -79,11 +77,4 @@ public class ServiceBorrowView extends JFrame{
         return borrowingUser;
     }
     
-    public static void main(String[] args) {
-        Book printedBook = new PrintedBook("123", "OOP with Java", "Tonny", 1);
-        printedBook.setIsAvailable(true);
-        User user = new User("12", "Tien Nguyen");
-        ServiceBorrowView view = new ServiceBorrowView(printedBook, user);
-        view.setVisible(true);
-    }
 }

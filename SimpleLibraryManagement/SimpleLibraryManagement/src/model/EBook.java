@@ -9,13 +9,7 @@ public class EBook extends Book{
         super(isbn, title, author);
         this.format = format;
     }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + " " + "isbn: " + getIsbn() + " title: " + getTitle() + " author: " + getAuthor() + " format: " + format.name();
-    }
-
-    
+        
     @Override
     public boolean isAvailable() {
         return true;
@@ -35,6 +29,12 @@ public class EBook extends Book{
         }
     }
 
+    @Override
+    public String toString() {
+        return "Ebook [isbn=" + getIsbn() + ", title=" + getTitle() + ", author="+getAuthor() + "format=" + getFormat() + ", available=true]";
+    }
+
+    
     
     
     

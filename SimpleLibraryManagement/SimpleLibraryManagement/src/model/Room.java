@@ -2,6 +2,7 @@ package model;
 
 
 public class Room extends Service{
+    private static final long serialVersionUID = 1L;
     private String id;
     private String description;
     private int capacity;
@@ -12,6 +13,7 @@ public class Room extends Service{
         this.id = id;
         this.description = description;
         this.capacity = capacity;
+        super.setIsAvailable(true);
         
     }
     public String getId() {
@@ -40,6 +42,12 @@ public class Room extends Service{
             Room room = (Room)obj;
             return (this.getId().equals(room.getId()));
         }
+    }
+
+       
+    @Override
+    public String toString() {
+        return "Room [id=" + id + ", description=" + description + ", capacity=" + capacity + "]";
     }
     
     

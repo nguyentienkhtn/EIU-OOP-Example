@@ -38,7 +38,7 @@ public class ServiceSearch extends JFrame{
     private JButton bookServiceButton;
     public ServiceSearch(User user){
         this.user = user;
-        availableServices = DataLoader.loadServiceData("eBooks.dat");
+        availableServices = DataLoader.loadServiceData("services.dat");
         searchResults = new ArrayList<>();
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));

@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Service {
+public abstract class Service implements Serializable{
+    private static final long serialVersionUID = 1L;
     private Date dueDate;
     private boolean isAvailable;
     public Date getDueDate(){
@@ -17,6 +19,8 @@ public class Service {
     public boolean isAvailable(){
         return isAvailable;
     }
+
+    
     
     
 } 

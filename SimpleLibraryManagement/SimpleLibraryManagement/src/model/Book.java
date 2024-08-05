@@ -33,10 +33,4 @@ public abstract class Book extends Service implements Serializable{
         this.author = author;
     }
     
-       
-    public abstract String toString();
-    
-    
-    
-    
 }

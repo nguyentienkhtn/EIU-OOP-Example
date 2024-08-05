@@ -14,18 +14,18 @@ import model.User;
 
 public class DataLoader {
     static List<Service> loadServiceData(String fileName){
-        List<Service> objects = new LinkedList<>();
+        List<Service> services = new LinkedList<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
             Object obj;
             while ((obj = ois.readObject()) != null) {
-                objects.add((Service)obj);
+                services.add((Service)obj);
             }
         } catch (EOFException e) {
             // End of file reached
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return objects;
+        return services;
     }
     static Map<String, User> loadUserData(String fileName){
         HashMap<String, User> userData = new HashMap<>();
