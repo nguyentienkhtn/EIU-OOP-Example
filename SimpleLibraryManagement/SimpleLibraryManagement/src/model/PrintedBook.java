@@ -1,13 +1,11 @@
 package model;
 
 public class PrintedBook extends Book{
-    private static final long serialVersionUID = 1L;
-    private boolean isAvailable;
     private int copyID;
     public PrintedBook(String isbn, String title, String author, int copyID) {
         super(isbn, title, author);
         this.copyID = copyID;
-        isAvailable = true;
+        super.setIsAvailable(true);
     }
     @Override
     public String toString() {
@@ -17,19 +15,18 @@ public class PrintedBook extends Book{
     public int getCopyID() {
         return copyID;
     }
+
     @Override
-    public boolean isAvailable() {
-        return isAvailable;
+    public boolean equals(Object obj) {
+        if(!(obj instanceof PrintedBook))
+            return false;
+        else{
+            PrintedBook pBook = (PrintedBook)obj;
+            return (this.getIsbn().equals(pBook.getIsbn())) && (this.getCopyID() == pBook.getCopyID());
+        }
     }
-    @Override
-    public void setIsAvailable(boolean value) {
-        isAvailable = value;
-    }
-    @Override
-    public void setDueDate() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDueDate'");
-    }
+    
+    
     
     
     

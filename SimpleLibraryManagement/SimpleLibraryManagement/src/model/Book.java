@@ -1,13 +1,12 @@
 package model;
 import java.io.Serializable;
-import java.util.Date;
 
-public abstract class Book implements Serializable, Service{
+public abstract class Book extends Service implements Serializable{
     private static final long serialVersionUID = 1L;
     private String isbn;
     private String title;
     private String author;
-    private Date dueDate;
+    
     
     public Book(String isbn, String title, String author) {
         this.isbn = isbn;
@@ -34,14 +33,7 @@ public abstract class Book implements Serializable, Service{
         this.author = author;
     }
     
-    
-    public Date getDueDate() {
-        return dueDate;
-    }
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
-    }
-    
+       
     public abstract String toString();
     
     

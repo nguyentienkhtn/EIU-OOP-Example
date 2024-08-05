@@ -15,11 +15,7 @@ public class EBook extends Book{
         return getClass().getSimpleName() + " " + "isbn: " + getIsbn() + " title: " + getTitle() + " author: " + getAuthor() + " format: " + format.name();
     }
 
-    @Override
-    public void setIsAvailable(boolean isBorrowed) {
-        
-    }
-
+    
     @Override
     public boolean isAvailable() {
         return true;
@@ -39,11 +35,7 @@ public class EBook extends Book{
         }
     }
 
-    @Override
-    public void setDueDate() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDueDate'");
-    }
+    
     
     
 }
