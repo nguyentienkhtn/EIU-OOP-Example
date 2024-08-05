@@ -10,6 +10,11 @@ public class User implements Serializable{
     private ArrayList<Book> borrowedBooks;
     private ArrayList<Room> bookedRooms;
     private List<Service> bookedService;
+    
+    public User(String id) {
+        this.id = id;
+    }
+
     public User(String id, String name) {
         this.id = id;
         this.name = name;
@@ -68,6 +73,16 @@ public class User implements Serializable{
     public String toString() {
         return "User [id=" + id + ", name=" + name + "]";
     }
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof User))
+            return false;
+        else{
+            User user = (User)obj;
+            return (this.getId().equals(user.getId())) && (this.hashedPassword.equals(user.hashedPassword));
+        }
+    }
+
     
     
     

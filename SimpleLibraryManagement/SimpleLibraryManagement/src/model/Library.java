@@ -18,6 +18,9 @@ public class Library {
         users.add(user);
     }
 
+    public boolean containsUser(User user){
+        return users.contains(user);
+    }
     public void addBook(Book book)
     {
         books.add(book);
