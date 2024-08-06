@@ -32,14 +32,13 @@ public class ServiceSearchView extends JFrame{
     private JList<Service> resultList;
     private DefaultListModel<Service> listModel;
     private List<Service> availableServices;
-    private List<Service> searchResults;
     private User user;
     private JSplitPane bookPane;
     private JButton bookServiceButton;
     public ServiceSearchView(User user){
         this.user = user;
-        availableServices = DataLoader.loadServiceData("services.dat");
-        searchResults = new ArrayList<>();
+        // availableServices = DataLoader.loadServiceData("services.dat");
+        
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         title = new JLabel("Hello " + user.getName() + ", Welcome to ABC library");
@@ -77,38 +76,59 @@ public class ServiceSearchView extends JFrame{
         // pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        addSearchButtonListener();
+        
     }
-    private void addSearchButtonListener() {
-        searchButton.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String keyString = searchTextField.getText();
-                listModel.clear();
-                searchResults.clear();
-                for (Service service : availableServices) {
-                    if(service.toString().toLowerCase().contains(keyString.toLowerCase()))
-                        searchResults.add(service);
-                }
-                if (searchResults.size() !=0) {
-                    resultNoti.setText("Great! We found some results");
-                    for (Service service : searchResults) {
-                        listModel.addElement(service);
-                        getContentPane().revalidate();
-                        getContentPane().repaint();
-                        pack();
-                    }
-                    
-                    getContentPane().add(bookPane);
-                }
-                else
-                    resultNoti.setText("Unfortunately, no result found!");
-                
-            }
-            
-        });
+
+    
+    public JLabel getResultNoti() {
+        return resultNoti;
     }
+
+
+
+    public void setListModel(DefaultListModel<Service> listModel) {
+        this.listModel = listModel;
+    }
+    
+    public DefaultListModel<Service> getListModel() {
+        return listModel;
+    }
+
+    public void setAvailableServices(List<Service> availableServices) {
+        this.availableServices = availableServices;
+    }
+
+    
+    public JTextField getSearchTextField() {
+        return searchTextField;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void addSearchButtonListener(ActionListener actionListener) {
+        searchButton.addActionListener(actionListener);
+    }
+
+    public void displayResult(List<Service> searchResults){
+        if (searchResults.size() !=0) {
+            resultNoti.setText("Great! We found some results");
+            for (Service service : searchResults) {
+                listModel.addElement(service);
+                getContentPane().revalidate();
+                getContentPane().repaint();
+                pack();
+            }
+            getContentPane().add(bookPane);
+            
+        }
+        else
+            resultNoti.setText("Unfortunately, no result found!");
+            
+    }
+    
 
     private void addBookServiceAction(){
         bookServiceButton.addActionListener(new ActionListener() {

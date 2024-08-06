@@ -26,11 +26,18 @@ public class Library {
         services.add(s);
     }
 
-    
-
     public void removeService(Service s){
         
         services.remove(s);
+    }
+
+    
+    public ArrayList<Service> getServices() {
+        return services;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
     }
 
     public ArrayList<Service> search(String keyword){
