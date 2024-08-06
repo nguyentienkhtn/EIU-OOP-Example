@@ -31,20 +31,15 @@ public class ServiceSearchView extends JFrame{
     private JLabel resultNoti;
     private JList<Service> resultList;
     private DefaultListModel<Service> listModel;
-    private List<Service> availableServices;
     private User user;
     private JSplitPane bookPane;
     private JButton bookServiceButton;
     public ServiceSearchView(User user){
         this.user = user;
-        // availableServices = DataLoader.loadServiceData("services.dat");
-        
+             
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         title = new JLabel("Hello " + user.getName() + ", Welcome to ABC library");
-        // title.setFont(new Font("Time New Romans", 5, 18));
-        
-        // JPanel search = new JPanel(new GridLayout(1, 2));
         searchTextField = new JTextField();
         searchButton = new JButton("Search for a service");
         resultNoti = new JLabel();
@@ -67,7 +62,6 @@ public class ServiceSearchView extends JFrame{
         add(listScrollPane);
         getContentPane().add(Box.createVerticalStrut(10));
         bookServiceButton = new JButton("Book");
-        addBookServiceAction();
         bookPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, new JLabel("Select one service and press the Book button"), bookServiceButton);
         bookPane.setDividerLocation(300); // Set the initial position of the divider
         bookPane.setResizeWeight(0.7); // Allocate 70% of space to the left panel
@@ -80,32 +74,8 @@ public class ServiceSearchView extends JFrame{
     }
 
 
-    
-    public JLabel getResultNoti() {
-        return resultNoti;
-    }
-
-
-
-    public void setListModel(DefaultListModel<Service> listModel) {
-        this.listModel = listModel;
-    }
-    
-    public DefaultListModel<Service> getListModel() {
-        return listModel;
-    }
-
-    public void setAvailableServices(List<Service> availableServices) {
-        this.availableServices = availableServices;
-    }
-
-    
     public JTextField getSearchTextField() {
         return searchTextField;
-    }
-
-    public User getUser() {
-        return user;
     }
 
     public void addSearchButtonListener(ActionListener actionListener) {
@@ -128,21 +98,19 @@ public class ServiceSearchView extends JFrame{
             resultNoti.setText("Unfortunately, no result found!");
             
     }
-    
 
-    private void addBookServiceAction(){
-        bookServiceButton.addActionListener(new ActionListener() {
+    public Service getSelectedService(){
+        return resultList.getSelectedValue();
+    }
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Service selectedService = resultList.getSelectedValue();
-                if (selectedService != null) {
-                    dispose();
-                    new ServiceBorrowView(selectedService, user).setVisible(true);
-                }
-            }; 
-        });
+    public void addBookServiceAction(ActionListener actionListener){
+        bookServiceButton.addActionListener(actionListener);
 
+    }
+
+    public User getUser()
+    {
+        return user;
     }
 
 }

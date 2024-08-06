@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import model.Library;
 import model.Service;
+import view.ServiceBorrowView;
 import view.ServiceSearchView;
 
 public class ServiceSearchController {
@@ -17,22 +18,34 @@ public class ServiceSearchController {
         this.model = model;
         this.view = view;
         this.view.addSearchButtonListener(new SearchAction());
+        this.view.addBookServiceAction(new BookListener());
     }
     private class SearchAction implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
             JTextField searchTextField = view.getSearchTextField();
-            DefaultListModel<Service> listModel = view.getListModel();
             List<Service> searchResults = new ArrayList<>();
             String keyString = searchTextField.getText();
-            listModel.clear();
-            searchResults.clear();
             searchResults = model.search(keyString);
             view.displayResult(searchResults);   
         }
        
     
+        
+    }
+
+    private class BookListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Service selectedService = view.getSelectedService();
+            if (selectedService != null) {
+                view.dispose();
+                new ServiceBorrowView(selectedService, view.getUser()).setVisible(true);
+            }
+
+        }
         
     }
 }
