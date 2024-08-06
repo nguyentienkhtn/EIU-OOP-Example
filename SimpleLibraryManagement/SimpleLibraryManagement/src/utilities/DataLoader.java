@@ -1,4 +1,4 @@
-package view;
+package utilities;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
