@@ -17,7 +17,7 @@ import model.Service;
 import model.User;
 
 public class ServiceBorrowView extends JFrame{
-    private Service service;
+    private Service selectedService;
     private User borrowingUser;
     private JLabel userInfor;
     private JLabel serviceInfor;
@@ -29,7 +29,7 @@ public class ServiceBorrowView extends JFrame{
     }
 
     public ServiceBorrowView(Service service, User borrowingUser) {
-        this.service = service;
+        this.selectedService = service;
         this.borrowingUser = borrowingUser;
 
         userInfor = new JLabel(borrowingUser.toString());
@@ -55,32 +55,23 @@ public class ServiceBorrowView extends JFrame{
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        addBookBorrowingButtonListener();
         
     }
-    public void addBookBorrowingButtonListener(){
-        borrowButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                borrowingUser.addBookedService(service);
-                service.setIsAvailable(false);
-                System.out.println(service);
-                serviceInfor.setText(service.toString());
-                result.setText("Successful! You can go to the counter to get the service");
-                borrowButton.setEnabled(false);
-                getContentPane().revalidate();
-                getContentPane().repaint();
-                pack();
-            }
-            
-        });
+    public void addServiceBookingButtonListener(ActionListener actionListener){
+        borrowButton.addActionListener(actionListener);
     }
-    public Service getService() {
-        return service;
+    public Service getSelectedService() {
+        return selectedService;
     }
     public User getBorrowingUser() {
         return borrowingUser;
+    }
+
+    public void setBookingButtonEnable(boolean status){
+        borrowButton.setEnabled(status);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+        pack();
     }
 
     public static void main(String[] args) {
