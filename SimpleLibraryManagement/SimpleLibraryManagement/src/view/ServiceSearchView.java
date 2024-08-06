@@ -1,9 +1,6 @@
 package view;
-import java.util.ArrayList;
 import java.util.List;
 
-
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
@@ -87,11 +84,12 @@ public class ServiceSearchView extends JFrame{
             resultNoti.setText("Great! We found some results");
             for (Service service : searchResults) {
                 listModel.addElement(service);
-                getContentPane().revalidate();
-                getContentPane().repaint();
-                pack();
+                
             }
             getContentPane().add(bookPane);
+            getContentPane().revalidate();
+            getContentPane().repaint();
+            pack();
             
         }
         else
