@@ -31,12 +31,12 @@ public class ServiceSearchView extends JFrame{
     private User user;
     private JSplitPane bookPane;
     private JButton bookServiceButton;
-    public ServiceSearchView(User user){
-        this.user = user;
-             
 
+
+    public ServiceSearchView(){
+        
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-        title = new JLabel("Hello " + user.getName() + ", Welcome to ABC library");
+        title = new JLabel();
         searchTextField = new JTextField();
         searchButton = new JButton("Search for a service");
         resultNoti = new JLabel();
@@ -47,9 +47,7 @@ public class ServiceSearchView extends JFrame{
         listModel = new DefaultListModel<>();
         resultList = new JList<>(listModel);
         resultList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-        title.setAlignmentX(LEFT_ALIGNMENT);
-        add(title);
+        getContentPane().add(title);
         getContentPane().add(Box.createVerticalStrut(10));
         add(searchPane);
         getContentPane().add(Box.createVerticalStrut(10));
@@ -69,8 +67,13 @@ public class ServiceSearchView extends JFrame{
         
         
     }
+    public void setLoggedInUser(User user){
+        this.user = user;
+        title.setText("Hello " +user.getName() + "! Welcome to ABC library");
+        getContentPane().revalidate();
+        getContentPane().repaint();
 
-
+    }
     public JTextField getSearchTextField() {
         return searchTextField;
     }

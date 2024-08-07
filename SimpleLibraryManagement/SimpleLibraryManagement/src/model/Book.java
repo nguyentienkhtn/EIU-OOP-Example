@@ -1,7 +1,6 @@
 package model;
-import java.io.Serializable;
 
-public abstract class Book extends Service implements Serializable{
+public abstract class Book extends Service{
     private static final long serialVersionUID = 1L;
     private String isbn;
     private String title;

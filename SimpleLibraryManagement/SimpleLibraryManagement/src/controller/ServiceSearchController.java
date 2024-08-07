@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import model.Library;
 import model.Service;
-import view.ServiceBorrowView;
 import view.ServiceSearchView;
 
 public class ServiceSearchController {
@@ -42,7 +41,8 @@ public class ServiceSearchController {
             Service selectedService = view.getSelectedService();
             if (selectedService != null) {
                 view.dispose();
-                new ServiceBorrowView(selectedService, view.getUser()).setVisible(true);
+                MainController.setServiceBookingView(view.getUser(), selectedService);
+
             }
 
         }

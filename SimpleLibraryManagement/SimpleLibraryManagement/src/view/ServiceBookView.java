@@ -1,7 +1,6 @@
 package view;
 
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
@@ -11,36 +10,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import model.EBook;
-import model.Format;
 import model.Service;
 import model.User;
 
-public class ServiceBorrowView extends JFrame{
+public class ServiceBookView extends JFrame{
     private Service selectedService;
     private User borrowingUser;
     private JLabel userInfor;
     private JLabel serviceInfor;
     private JButton borrowButton;
     private JLabel result;
-    
-    public ServiceBorrowView(){
+ 
 
-    }
+    public ServiceBookView() {
+        
 
-    public ServiceBorrowView(Service service, User borrowingUser) {
-        this.selectedService = service;
-        this.borrowingUser = borrowingUser;
-
-        userInfor = new JLabel(borrowingUser.toString());
-        serviceInfor = new JLabel(service.toString());
+        userInfor = new JLabel();
+        serviceInfor = new JLabel();
         borrowButton = new JButton("Borrow/Book this service");
         result = new JLabel();
-        if(!service.isAvailable()){
-            borrowButton.setEnabled(false);
-            result.setText("Cannot use this service");
-        }
-            
         
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         getContentPane().add(new JLabel("Please check the following information!"));
@@ -57,6 +45,7 @@ public class ServiceBorrowView extends JFrame{
         
         
     }
+
     public void addServiceBookingButtonListener(ActionListener actionListener){
         borrowButton.addActionListener(actionListener);
     }
@@ -66,6 +55,22 @@ public class ServiceBorrowView extends JFrame{
     public User getBorrowingUser() {
         return borrowingUser;
     }
+    
+
+    public void setSelectedService(Service selectedService) {
+        this.selectedService = selectedService;
+        serviceInfor.setText(selectedService.toString());
+        if(!selectedService.isAvailable()){
+            borrowButton.setEnabled(false);
+            result.setText("Cannot use this service");
+        }
+    }
+
+    public void setBorrowingUser(User borrowingUser) {
+        this.borrowingUser = borrowingUser;
+        userInfor.setText(borrowingUser.getName());
+
+    }
 
     public void setBookingButtonEnable(boolean status){
         borrowButton.setEnabled(status);
@@ -74,10 +79,6 @@ public class ServiceBorrowView extends JFrame{
         pack();
     }
 
-    public static void main(String[] args) {
-        User test = new User("12", "Tien Nguyen");
-        Service ebook = new EBook("123", "OOP with Java", null, Format.CHM);
-        new ServiceBorrowView(ebook, test).setVisible(true);
-    }
+    
     
 }

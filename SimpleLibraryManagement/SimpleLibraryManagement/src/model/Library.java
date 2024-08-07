@@ -1,4 +1,8 @@
 package model;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +47,7 @@ public class Library {
     public ArrayList<Service> search(String keyword){
         ArrayList<Service> result = new ArrayList<>();
         for (Service s : services) {
-            if(s.toString().contains(keyword))
+            if(s.toString().toLowerCase().contains(keyword.toLowerCase()))
                 result.add(s);
         }
         return result;
@@ -76,6 +80,44 @@ public class Library {
         }
         return result;
     }
+
+    public void loadUsersFromFile(String fileName){
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))) {
+            while (true) {
+                try {
+                    User user = (User) in.readObject();
+                    users.add(user);
+                } catch (EOFException e) {
+                    break; // End of file reached
+                }
+            }
+        } 
+        catch(ClassNotFoundException c){
+            
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void loadServicesFromFile(String fileName){
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))) {
+            while (true) {
+                try {
+                    Service service = (Service) in.readObject();
+                    services.add(service);
+                } catch (EOFException e) {
+                    break; // End of file reached
+                }
+            }
+        } 
+        catch(ClassNotFoundException c){
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 
 
 

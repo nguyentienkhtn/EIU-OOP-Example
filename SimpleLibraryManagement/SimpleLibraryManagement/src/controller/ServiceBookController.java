@@ -3,17 +3,17 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.Library;
-import view.ServiceBorrowView;
+import view.ServiceBookView;
 
 
 
 public class ServiceBookController {
     private Library model;
-    private ServiceBorrowView view;
+    private ServiceBookView view;
     
 
 
-    public ServiceBookController(Library model, ServiceBorrowView view) {
+    public ServiceBookController(Library model, ServiceBookView view) {
         this.model = model;
         this.view = view;
         this.view.addServiceBookingButtonListener(new BookButonListener());
@@ -27,7 +27,9 @@ public class ServiceBookController {
         public void actionPerformed(ActionEvent e) {
             model.bookService(view.getBorrowingUser(), view.getSelectedService(), 1);
             view.setBookingButtonEnable(false);
-            JOptionPane.showMessageDialog(view, "Booked service: " + view.getSelectedService());            
+            JOptionPane.showMessageDialog(view, "Booked service: " + view.getSelectedService());  
+            // view.dispose();
+                    
         }
             
     }

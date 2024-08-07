@@ -3,7 +3,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import utilities.PasswordUtil;
+
 public class User implements Serializable{
+    private static final long serialVersionUID = 1L;
     private String id;
     private String name;
     private String hashedPassword;
@@ -11,6 +14,7 @@ public class User implements Serializable{
     
     public User(String id) {
         this.id = id;
+        bookedServices = new ArrayList<>();
     }
 
     public User(String id, String name) {
@@ -19,8 +23,8 @@ public class User implements Serializable{
         bookedServices = new ArrayList<>();
     }
     
-    public void setPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
+    public void setPassword(String password) {
+        this.hashedPassword = PasswordUtil.hashPassword(password);
     }
     
     

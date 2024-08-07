@@ -47,19 +47,5 @@ public class LoginView extends JFrame {
 
 }
 
-    // public static void main(String[] args) {
-    //     User us = new User("12", "Tien Nguyen");
-    //     us.setPassword(utilities.PasswordUtil.hashPassword("@123"));
-    //     try {
-    //         FileOutputStream fileOutputStream = new FileOutputStream("userData.dat");
-    //         ObjectOutputStream is = new ObjectOutputStream(fileOutputStream);
-    //         is.writeObject(us);
-            
-    //     } catch (IOException e) {
-    //         // TODO Auto-generated catch block
-    //         e.printStackTrace();
-    //     }
-        
-    //     new LoginView().setVisible(true);
-    // }
+
 

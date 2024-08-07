@@ -9,7 +9,6 @@ import model.Library;
 import model.User;
 import utilities.PasswordUtil;
 import view.LoginView;
-import view.ServiceSearchView;
 
 public class LoginController {
     private Library model;
@@ -32,13 +31,14 @@ public class LoginController {
             for (char c : password) {
                 passBuilder.append(c);
             }
-            String hashedPassword = PasswordUtil.hashPassword(passBuilder.toString());
+            
             
             User user = new User(userName);
-            user.setPassword(hashedPassword);
+            user.setPassword(passBuilder.toString());
             if(model.containsUser(user)){
                 view.dispose();//close current window
-                new ServiceSearchView(user).setVisible(true);;
+                
+                MainController.setLoggedInUser(user);
             }
             else
             {
